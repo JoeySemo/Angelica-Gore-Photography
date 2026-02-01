@@ -11,10 +11,15 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ShutterReveal from "@/components/ShutterReveal";
+import BokehBackground from "@/components/BokehBackground";
 
 export default function Home() {
   return (
     <>
+      {/* Camera Shutter Entrance Animation */}
+      <ShutterReveal />
+
       <Navbar />
       <main>
         {/* Hero Section */}
@@ -22,6 +27,9 @@ export default function Home() {
           <div className="absolute inset-0 opacity-20">
             <div className="absolute inset-0 bg-[url('/pattern.svg')] bg-repeat opacity-10"></div>
           </div>
+
+          {/* Dynamic Bokeh Background with Camera Flash Effects */}
+          <BokehBackground />
 
           <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
             <motion.h1
@@ -40,7 +48,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl md:text-2xl mb-8 text-gray-300"
             >
-              Professional photography services in Cuba, MO<br />
+              Professional Photography Services In Cuba, MO<br />
               Portraits • Events • Sports • Milestones
             </motion.p>
 
@@ -52,13 +60,13 @@ export default function Home() {
             >
               <Link
                 href="/contact"
-                className="bg-[#C9A86A] text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-[#A0854D] transition-all duration-300 shadow-lg hover:shadow-xl"
+                className="bg-[#C9A86A] text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-[#A0854D] transition-all duration-300 shadow-lg hover:shadow-xl"
               >
                 Book Your Session
               </Link>
               <Link
                 href="/gallery"
-                className="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
+                className="border-2 border-white text-white px-6 py-3 md:px-8 md:py-4 rounded-full text-base md:text-lg font-semibold hover:bg-white hover:text-gray-900 transition-all duration-300"
               >
                 View Gallery
               </Link>
@@ -92,42 +100,50 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {[
                 {
                   title: "Portrait Photography",
                   description: "Individual, senior, and family portraits with natural, vibrant style",
-                  icon: "👤",
+                  image: "/portrait-icon.png",
                 },
                 {
                   title: "Milestone Sessions",
                   description: "Celebrate life's special moments - birthdays, cake smashes, and more",
-                  icon: "🎂",
+                  image: "/milestone-icon.png",
                 },
                 {
                   title: "Event Coverage",
                   description: "Proms, reunions, parties - your event captured beautifully",
-                  icon: "🎉",
+                  image: "/event-icon.png",
                 },
                 {
                   title: "Sports Photography",
                   description: "Dynamic action shots of local athletic events and teams",
-                  icon: "⚽",
+                  image: "/sports-icon.png",
                 },
               ].map((service, index) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-gray-50 p-8 rounded-lg hover:shadow-xl transition-all duration-300 border border-gray-200 hover:border-[#C9A86A]"
+                  className="bg-gray-50 p-4 md:p-8 rounded-lg shadow-lg transition-all duration-300 border border-gray-200 h-full"
                 >
-                  <div className="text-5xl mb-4">{service.icon}</div>
-                  <h3 className="font-serif text-2xl font-bold mb-3 text-[#2D3142]">
+                  <div className="mb-3 md:mb-6">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      width={200}
+                      height={200}
+                      className="w-full h-32 md:h-48 object-contain"
+                    />
+                  </div>
+                  <h3 className="font-serif text-xl md:text-2xl font-bold mb-2 md:mb-3 text-[#2D3142]">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600">{service.description}</p>
+                  <p className="text-gray-600 text-sm md:text-base">{service.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -201,7 +217,7 @@ export default function Home() {
                   </ul>
                   <a
                     href="tel:5732050592"
-                    className="block text-center bg-[#C9A86A] hover:bg-[#A0854D] px-6 py-3 rounded-full transition-colors duration-300 font-semibold"
+                    className="block text-center bg-[#C9A86A] hover:bg-[#A0854D] px-4 py-2 md:px-6 md:py-3 rounded-full transition-colors duration-300 font-semibold text-sm md:text-base"
                   >
                     Book Now
                   </a>

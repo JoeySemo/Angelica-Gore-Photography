@@ -93,7 +93,7 @@ export default function ShutterReveal() {
                                 alt="Angelica Gore Photography"
                                 width={160}
                                 height={160}
-                                className="w-full h-full object-cover"
+                                className="w-full h-full object-cover object-[center_25%]"
                                 priority
                             />
                         </div>

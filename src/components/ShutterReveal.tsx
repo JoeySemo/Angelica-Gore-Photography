@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function ShutterReveal() {
     const [isOpen, setIsOpen] = useState(false);
@@ -86,7 +87,16 @@ export default function ShutterReveal() {
                         animate={{ opacity: isOpen ? 0 : 1, scale: isOpen ? 0.8 : 1 }}
                         transition={{ duration: 0.9 }} // Slowed 3x
                     >
-                        <div className="text-[#C9A86A] text-6xl mb-4">📷</div>
+                        <div className="w-40 h-40 mb-4 rounded-full overflow-hidden border-4 border-[#C9A86A] shadow-lg">
+                            <Image
+                                src="/intro-image.jpg"
+                                alt="Angelica Gore Photography"
+                                width={160}
+                                height={160}
+                                className="w-full h-full object-cover"
+                                priority
+                            />
+                        </div>
                         <h1 className="font-serif text-2xl text-white tracking-widest">
                             Angelica Gore
                         </h1>
